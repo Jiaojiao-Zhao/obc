@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>Discover Kunshan · 昆山美食地图</title>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #fefefe, #e8f3ff);
+        font-family: 'Noto Sans SC', sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 80px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        font-size: 40px;
+        margin-bottom: 25px;
+        color: #1a3c5f;
+    }
+
+    .section {
+        margin-bottom: 35px;
+    }
+
+    .title-cn, .title-en {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #2b2b2b;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #444;
+        width: 90%;
+        margin: 0 auto 18px auto;
+    }
+
+    ul {
+        text-align: left;
+        font-size: 18px;
+        color: #444;
+        max-width: 600px;
+        margin: 20px auto;
+        line-height: 1.8;
+    }
+
+    .enter-btn {
+        margin-top: 40px;
+        padding: 18px 50px;
+        font-size: 22px;
+        background: #0a84ff;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .enter-btn:hover {
+        background: #0066d6;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Discover Kunshan · 昆山美食文化地图</h1>
+
+    <!-- Chinese Section -->
+    <div class="section">
+        <div class="title-cn">>Project Overview (项目简介)</div>
+        <p>
+            本项目通过互动式地理可视化，呈现昆山丰富多样的美食文化景观。
+            基于田野调查、地理数据与照片资料，我们希望帮助用户探索“地方味道”背后的社区故事，支持文化理解与城市可持续性。
+            This interactive geospatial visualization highlights Kunshan’s diverse culinary landscape.
+            Integrating fieldwork photos, restaurant observations, and open geospatial data, the project
+            helps users explore how food culture connects neighborhoods, supports small businesses, and
+            reflects the city’s unique community identity.
+        </p>
+
+        <ul>
+            <li>📍 可交互的 Mapbox 地图（缩放、点击、路线）Interactive Mapbox map with zoom, hover, and click actions</li>
+            <li>🖼 餐馆卡片：照片、特色菜、价格、文化背景 Restaurant detail cards with images and cultural notes</li>
+            <li>🔍 筛选功能：菜系、价格水平、距离 Data sour《+ced from fieldwork + open geospatial datasets</li>
+            <li>📝 结合实地调研与开放数据 Combine field research with open data as cross-refence</li>
+            <li>🌏 支持联合国永续发展目标：质量教育（SDG4）、可持续城市（SDG11）SDG alignment: Quality Education (SDG 4), Sustainable Cities (SDG 11)</li>
+        </ul>
+    </div>
+
+    <hr style="width: 70%; margin: 40px auto; border: 0.7px solid #ddd;">
+
+    <button class="enter-btn" onclick="location.href='kunshan_food_map.html'">
+        进入互动地图 · Enter Interactive Map
+    </button>
+
+</div>
+
+</body>
+</html>
