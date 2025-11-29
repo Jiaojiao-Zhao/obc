@@ -2,112 +2,501 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>Discover Kunshan · 昆山美食地图</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discover Kunshan · 昆山美食文化地图</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        background: linear-gradient(135deg, #fefefe, #e8f3ff);
-        font-family: 'Noto Sans SC', sans-serif;
+    * {
         margin: 0;
         padding: 0;
-        text-align: center;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-family: 'Noto Sans SC', sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    /* Animated background particles */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        animation: float 20s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
     .container {
-        max-width: 1000px;
-        margin: 80px auto;
-        padding: 40px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        position: relative;
+        z-index: 1;
     }
 
-    h1 {
-        font-size: 40px;
-        margin-bottom: 25px;
-        color: #1a3c5f;
+    /* Hero Section */
+    .hero {
+        text-align: center;
+        margin-bottom: 60px;
+        animation: fadeInUp 1s ease-out;
     }
 
-    .section {
-        margin-bottom: 35px;
+    .hero-title {
+        font-size: 56px;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 16px;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        line-height: 1.2;
     }
 
-    .title-cn, .title-en {
-        font-size: 26px;
-        font-weight: bold;
-        margin-bottom: 15px;
-        color: #2b2b2b;
+    .hero-subtitle {
+        font-size: 24px;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 300;
+        margin-bottom: 40px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
 
-    p {
+    .hero-description {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 32px;
+        border-radius: 24px;
+        max-width: 900px;
+        margin: 0 auto 40px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-description p {
         font-size: 18px;
-        line-height: 1.7;
-        color: #444;
-        width: 90%;
-        margin: 0 auto 18px auto;
-    }
-
-    ul {
-        text-align: left;
-        font-size: 18px;
-        color: #444;
-        max-width: 600px;
-        margin: 20px auto;
         line-height: 1.8;
+        color: #333;
+        margin-bottom: 0;
+    }
+
+    /* Feature Cards */
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        margin-bottom: 60px;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 32px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeInUp 1s ease-out both;
+        backdrop-filter: blur(10px);
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.3s; }
+    .feature-card:nth-child(2) { animation-delay: 0.4s; }
+    .feature-card:nth-child(3) { animation-delay: 0.5s; }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .feature-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        display: inline-block;
+        animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .feature-card:hover .feature-icon {
+        animation: none;
+        transform: scale(1.2);
+        transition: transform 0.3s ease;
+    }
+
+    .feature-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 12px;
+    }
+
+    .feature-description {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    /* Highlights Section */
+    .highlights {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 24px;
+        margin-bottom: 50px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        animation: fadeInUp 1s ease-out 0.6s both;
+        backdrop-filter: blur(10px);
+    }
+
+    .highlights-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 28px;
+        text-align: center;
+    }
+
+    .highlights-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        list-style: none;
+    }
+
+    .highlights-list li {
+        padding: 20px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 16px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+
+    .highlights-list li:hover {
+        transform: translateX(10px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    /* CTA Button */
+    .cta-section {
+        text-align: center;
+        animation: fadeInUp 1s ease-out 0.7s both;
     }
 
     .enter-btn {
-        margin-top: 40px;
-        padding: 18px 50px;
-        font-size: 22px;
-        background: #0a84ff;
+        display: inline-block;
+        padding: 20px 60px;
+        font-size: 24px;
+        font-weight: 600;
         color: white;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         border: none;
-        border-radius: 12px;
+        border-radius: 50px;
         cursor: pointer;
-        transition: 0.3s;
+        text-decoration: none;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .enter-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s;
+    }
+
+    .enter-btn:hover::before {
+        left: 100%;
     }
 
     .enter-btn:hover {
-        background: #0066d6;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 50px rgba(102, 126, 234, 0.6);
+    }
+
+    .enter-btn:active {
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Stats Section */
+    .stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 50px 0;
+        animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    .stat-item {
+        text-align: center;
+        color: white;
+    }
+
+    .stat-number {
+        font-size: 48px;
+        font-weight: 700;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        margin-bottom: 8px;
+    }
+
+    .stat-label {
+        font-size: 16px;
+        opacity: 0.9;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Page Transition Overlay */
+    .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+
+    .page-transition.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .transition-content {
+        text-align: center;
+        color: white;
+    }
+
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .transition-text {
+        font-size: 24px;
+        font-weight: 600;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Page Load Animation */
+    body.loaded {
+        animation: pageLoadFade 0.6s ease-out;
+    }
+
+    @keyframes pageLoadFade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 36px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+        }
+
+        .features {
+            grid-template-columns: 1fr;
+        }
+
+        .stats {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .enter-btn {
+            padding: 16px 40px;
+            font-size: 20px;
+        }
     }
 </style>
 </head>
 
-<body>
+<body class="loaded">
+
+<!-- Page Transition Overlay -->
+<div class="page-transition" id="pageTransition">
+    <div class="transition-content">
+        <div class="spinner"></div>
+        <div class="transition-text">载入地图中 · Loading Map...</div>
+    </div>
+</div>
 
 <div class="container">
 
-    <h1>Discover Kunshan · 昆山美食文化地图</h1>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1 class="hero-title">🗺️ Discover Kunshan</h1>
+        <p class="hero-subtitle">昆山美食文化地图 · Culinary Cultural Map</p>
+        
+        <div class="hero-description">
+            <p>
+                本项目通过互动式地理可视化，呈现昆山丰富多样的美食文化景观。
+                基于田野调查、地理数据与照片资料，我们希望帮助用户探索"地方味道"背后的社区故事，支持文化理解与城市可持续性。
+                <br><br>
+                This interactive geospatial visualization highlights Kunshan's diverse culinary landscape.
+                Integrating fieldwork photos, restaurant observations, and open geospatial data, the project
+                helps users explore how food culture connects neighborhoods, supports small businesses, and
+                reflects the city's unique community identity.
+            </p>
+        </div>
+    </div>
 
-    <!-- Chinese Section -->
-    <div class="section">
-        <div class="title-cn">>Project Overview (项目简介)</div>
-        <p>
-            本项目通过互动式地理可视化，呈现昆山丰富多样的美食文化景观。
-            基于田野调查、地理数据与照片资料，我们希望帮助用户探索“地方味道”背后的社区故事，支持文化理解与城市可持续性。
-            This interactive geospatial visualization highlights Kunshan’s diverse culinary landscape.
-            Integrating fieldwork photos, restaurant observations, and open geospatial data, the project
-            helps users explore how food culture connects neighborhoods, supports small businesses, and
-            reflects the city’s unique community identity.
-        </p>
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Featured Restaurants<br>精选餐厅</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Cuisine Categories<br>菜系分类</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Interactive Map<br>可交互地图</div>
+        </div>
+    </div>
 
-        <ul>
-            <li>📍 可交互的 Mapbox 地图（缩放、点击、路线）Interactive Mapbox map with zoom, hover, and click actions</li>
-            <li>🖼 餐馆卡片：照片、特色菜、价格、文化背景 Restaurant detail cards with images and cultural notes</li>
-            <li>🔍 筛选功能：菜系、价格水平、距离 Data sour《+ced from fieldwork + open geospatial datasets</li>
-            <li>📝 结合实地调研与开放数据 Combine field research with open data as cross-refence</li>
-            <li>🌏 支持联合国永续发展目标：质量教育（SDG4）、可持续城市（SDG11）SDG alignment: Quality Education (SDG 4), Sustainable Cities (SDG 11)</li>
+    <!-- Feature Cards -->
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🗺️</div>
+            <h3 class="feature-title">Interactive Mapping<br>互动地图</h3>
+            <p class="feature-description">
+                Explore restaurants on an interactive map with zoom, filtering, and detailed popups featuring photos and information.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🍜</div>
+            <h3 class="feature-title">Cultural Insights<br>文化洞察</h3>
+            <p class="feature-description">
+                Discover the stories behind local flavors, traditional dishes, and how food connects communities in Kunshan.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Data-Driven<br>数据驱动</h3>
+            <p class="feature-description">
+                Combines fieldwork research with geospatial datasets to provide accurate and comprehensive restaurant information.
+            </p>
+        </div>
+    </div>
+
+    <!-- Highlights Section -->
+    <div class="highlights">
+        <h2 class="highlights-title">✨ Project Highlights · 项目亮点</h2>
+        <ul class="highlights-list">
+            <li>📍 可交互的地图（缩放、点击、筛选）<br>Interactive map with zoom, click, and filtering</li>
+            <li>🖼️ 餐馆详细卡片（照片、特色菜、价格）<br>Restaurant detail cards with images and cultural notes</li>
+            <li>🔍 智能筛选功能（菜系分类）<br>Smart filtering by cuisine categories</li>
+            <li>📝 结合实地调研与开放数据<br>Fieldwork combined with open data</li>
+            <li>🌏 支持联合国可持续发展目标（SDG 4, 11）<br>SDG alignment: Quality Education & Sustainable Cities</li>
         </ul>
     </div>
 
-    <hr style="width: 70%; margin: 40px auto; border: 0.7px solid #ddd;">
-
-    <button class="enter-btn" onclick="location.href='kunshan_food_map.html'">
-        进入互动地图 · Enter Interactive Map
-    </button>
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <button class="enter-btn" onclick="navigateToMap()">
+            进入互动地图 · Enter Interactive Map 🚀
+        </button>
+    </div>
 
 </div>
+
+<script>
+    // Smooth page transition function
+    function navigateToMap() {
+        const transition = document.getElementById('pageTransition');
+        
+        // Show transition overlay
+        transition.classList.add('active');
+        
+        // Navigate after animation completes
+        setTimeout(() => {
+            window.location.href = 'suzhou_cultural_map.html';
+        }, 800);
+    }
+
+    // Fade in page on load
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+    });
+
+    // Handle browser back button - fade in
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            document.getElementById('pageTransition').classList.remove('active');
+            document.body.classList.add('loaded');
+        }
+    });
+</script>
 
 </body>
 </html>
