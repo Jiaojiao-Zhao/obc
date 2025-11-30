@@ -1,6 +1,3 @@
-This is a project about a interactive food map in Kunshan.
-Visualization can be accessed here: https://jiaojiao-zhao.github.io/Info301-Final-Project/front.html
-
 # 🥢 Discover Kunshan · 昆山美食文化互动地图
 ### Interactive Cultural Food Map · INFO301 Final Project
 
