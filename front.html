@@ -409,7 +409,7 @@
     <!-- Stats Section -->
     <div class="stats">
         <div class="stat-item">
-            <div class="stat-number">8</div>
+            <div class="stat-number">10</div>
             <div class="stat-label">Featured Restaurants<br>精选餐厅</div>
         </div>
         <div class="stat-item">
@@ -452,14 +452,72 @@
     <!-- Highlights Section -->
     <div class="highlights">
         <h2 class="highlights-title">✨ Project Highlights · 项目亮点</h2>
-        <ul class="highlights-list">
+        <ul class="highlights-list" style="grid-template-columns: repeat(2, 1fr);">
             <li>📍 可交互的地图（缩放、点击、筛选）<br>Interactive map with zoom, click, and filtering</li>
             <li>🖼️ 餐馆详细卡片（照片、特色菜、价格）<br>Restaurant detail cards with images and cultural notes</li>
             <li>🔍 智能筛选功能（菜系分类）<br>Smart filtering by cuisine categories</li>
             <li>📝 结合实地调研与开放数据<br>Fieldwork combined with open data</li>
-            <li>🌏 支持联合国可持续发展目标（SDG 4, 11）<br>SDG alignment: Quality Education & Sustainable Cities</li>
         </ul>
     </div>
+
+
+        <!-- SDG Section -->
+    <div class="highlights" style="margin-top: 40px;">
+        <h2 class="highlights-title">🌍 SDG Alignment · 联合国可持续发展目标</h2>
+
+        <!-- SDG 总图 -->
+        <div style="text-align:center; margin-bottom: 30px;">
+            <img src="pictures/SDG_total.jpg" alt="SDG Goals" 
+                style="width: 85%; max-width: 600px; border-radius: 16px;">
+        </div>
+
+
+        <!-- 扁平 2×2 SDG 卡片 -->
+        <ul class="highlights-list" style="grid-template-columns: repeat(2, 1fr);">
+            
+            <!-- SDG 4 -->
+            <li style="display:flex; gap:18px; align-items:flex-start;">
+                <img src="pictures/SDG4.jpg" style="width:70px; flex-shrink:0;">
+                <div>
+                    <b>SDG 4 — Quality Education</b><br>
+                    通过将日常饮食文化转化为互动学习工具，本项目鼓励探究式学习与情境理解。<br>
+                    Promotes inquiry-based cultural learning through interactive visualization.
+                </div>
+            </li>
+
+            <!-- SDG 8 -->
+            <li style="display:flex; gap:18px; align-items:flex-start;">
+                <img src="pictures/SDG8.jpg" style="width:70px; flex-shrink:0;">
+                <div>
+                    <b>SDG 8 — Decent Work & Economic Growth</b><br>
+                    让社区小餐馆被更多人看到，为地方小型商家带来客流与关注。<br>
+                    Supports visibility and economic vitality of small food businesses.
+                </div>
+            </li>
+
+            <!-- SDG 11 -->
+            <li style="display:flex; gap:18px; align-items:flex-start;">
+                <img src="pictures/SDG11.jpg" style="width:70px; flex-shrink:0;">
+                <div>
+                    <b>SDG 11 — Sustainable Cities & Communities</b><br>
+                    强调社区扎根型餐馆，支持本地经济与可持续消费选择。<br>
+                    Encourages local, sustainable, community-rooted food culture.
+                </div>
+            </li>
+
+            <!-- SDG 17 -->
+            <li style="display:flex; gap:18px; align-items:flex-start;">
+                <img src="pictures/SDG17.jpg" style="width:70px; flex-shrink:0;">
+                <div>
+                    <b>SDG 17 — Partnerships for the Goals</b><br>
+                    基于田野调查、社区访谈与校园协作，体现跨领域合作精神。<br>
+                    Built collaboratively through fieldwork, community input, and campus partnerships.
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
 
     <!-- CTA Section -->
     <div class="cta-section">

@@ -1364,6 +1364,344 @@ folium.Marker(
 ).add_to(local_group)
 
 
+site_9 = [31.415638, 120.945672]
+
+
+with open("pictures/yuzhanggui.jpg", "rb") as image_file:
+    encoded_yz = base64.b64encode(image_file.read()).decode('utf-8')
+
+
+html_yz = f"""
+<div style="
+    font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+    max-width: 380px;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(37,99,235,0.1);
+    color: #1e293b;
+    overflow: hidden;
+">
+  <div style="position: relative; overflow: hidden; border-radius: 20px 20px 0 0;">
+    <img src="data:image/png;base64,{encoded_yz}"
+         alt="渔掌柜酸菜鱼"
+         style="width: 100%; height: 200px; object-fit: cover; display: block;" />
+    <div style="
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(37,99,235,0.95);
+        backdrop-filter: blur(10px);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: white;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    ">🐟 酸菜鱼</div>
+  </div>
+  
+  <div style="padding: 24px;">
+    <div style="margin-bottom: 16px;">
+      <h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #1a1a1a; line-height: 1.2;">
+        渔掌柜酸菜鱼
+      </h3>
+      <p style="margin: 4px 0 0; font-size: 15px; color: #2563eb; font-weight: 500;">
+        Yuzhanggui Sauerkraut Fish
+      </p>
+    </div>
+    
+    <div style="
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        padding: 8px 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        border: 1px solid rgba(37,99,235,0.2);
+    ">
+      <span style="font-size: 13px; color: #1d4ed8; font-weight: 600; margin-right: 8px;">推荐指数</span>
+      <span style="font-size: 16px; color: #f59e0b;">★★★★☆</span>
+    </div>
+    
+    <p style="
+        margin: 0 0 20px;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #4a4a4a;
+        background: rgba(255,255,255,0.6);
+        padding: 14px;
+        border-radius: 12px;
+        border-left: 3px solid #2563eb;
+    ">
+      昆山本地特色鱼锅店，不吃辣的朋友可以选择番茄锅，非常清爽开胃。<br>
+      酸菜鱼也很受欢迎，鱼片细嫩，汤底香浓不腻。<br><br>
+      <em style="color: #666; font-size: 13px;">A local Kunshan fish pot restaurant. The tomato broth is perfect for non-spicy eaters. Tender fish slices and a rich, aromatic soup.</em>
+    </p>
+    
+    <div style="display: grid; gap: 12px;">
+      <div style="
+          background: white;
+          padding: 12px;
+          border-radius: 10px;
+          border-left: 3px solid #2563eb;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      ">
+        <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">📍 Location</div>
+        <div style="font-size: 13px; color: #333; font-weight: 500;">玉山镇北门路1222号 · Beimen Road No.1222 </div>
+      </div>
+      
+      <div style="
+          background: white;
+          padding: 12px;
+          border-radius: 10px;
+          border-left: 3px solid #f59e0b;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      ">
+        <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">🍴 Must-Try</div>
+        <div style="font-size: 13px; color: #333;">番茄鱼 · 酸菜鱼</div>
+      </div>
+      
+      <div style="display: flex; gap: 12px;">
+        <div style="
+            flex: 1;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 3px solid #10b981;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        ">
+          <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">💰 Price</div>
+          <div style="font-size: 16px; color: #333; font-weight: 700;">¥66</div>
+        </div>
+        
+        <a href="https://m.dianping.com/shopinfo/k6boKBjkcO7NA67n?msource=Appshare2021&utm_source=shop_share&shoptype=10&shopcategoryid=4583&cityid=416&isoversea=0" 
+           target="_blank" 
+           style="
+            flex: 1;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+          <span>📱 大众点评</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+"""
+
+# --- 4. Popup IFrame ---
+iframe_yz = IFrame(html_yz, width=420, height=600)
+popup_yz = folium.Popup(iframe_yz, max_width=2500)
+
+icon_yz = DivIcon(html=f'''
+    <div style="
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid #2563eb;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    ">
+        <img src="pictures/yuzhanggui_logo.jpg" 
+             style="width: 36px; height: 36px; object-fit: cover; border-radius: 50%;">
+    </div>
+''', icon_size=(48, 48), icon_anchor=(24, 24))
+
+folium.Marker(
+    location=site_9,
+    popup=popup_yz,
+    tooltip="渔掌柜酸菜鱼 Yuzhanggui Sauerkraut Fish",
+    icon=icon_yz
+).add_to(local_group)
+
+# --- 1. 坐标（你提供的） ---
+site_10 = [31.407038, 120.972177]
+
+# --- 2. 加载主图 ---
+with open("pictures/mingdong.jpg", "rb") as image_file:
+    encoded_md = base64.b64encode(image_file.read()).decode('utf-8')
+
+# --- 3. HTML 卡片内容 ---
+html10 = f"""
+<div style="
+    font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+    max-width: 380px;
+    background: linear-gradient(135deg, #fff5f5 0%, #fee2e2 100%);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18), 0 0 0 1px rgba(220,38,38,0.1);
+    color: #1e293b;
+    overflow: hidden;
+">
+  <div style="position: relative; overflow: hidden; border-radius: 20px 20px 0 0;">
+    <img src="data:image/png;base64,{encoded_md}"
+         alt="明洞火炉"
+         style="width: 100%; height: 200px; object-fit: cover; display: block;" />
+    <div style="
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(220,38,38,0.95);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: white;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(220,38,38,0.35);
+    ">🔥 Barbecue</div>
+  </div>
+  
+  <div style="padding: 24px;">
+    <div style="margin-bottom: 16px;">
+      <h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #1a1a1a; line-height: 1.2;">
+        明洞火炉 · 韩国烤肉
+      </h3>
+      <p style="margin: 4px 0 0; font-size: 15px; color: #dc2626; font-weight: 500;">
+        Myeongdong Korean BBQ
+      </p>
+    </div>
+    
+    <div style="
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(135deg, #fecaca, #fca5a5);
+        padding: 8px 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        border: 1px solid rgba(220,38,38,0.2);
+    ">
+      <span style="font-size: 13px; color: #b91c1c; font-weight: 600; margin-right: 8px;">推荐指数</span>
+      <span style="font-size: 16px; color: #f59e0b;">★★★★☆</span>
+    </div>
+    
+    <p style="
+        margin: 0 0 20px;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #4a4a4a;
+        background: rgba(255,255,255,0.6);
+        padding: 14px;
+        border-radius: 12px;
+        border-left: 3px solid #dc2626;
+    ">
+      好吃种类多的韩国烤肉料理，氛围轻松，适合朋友聚会和非正式小型聚餐。肉质优质，配菜丰富，炭火香气浓郁。<br><br>
+      <em style="color: #666; font-size: 13px;">A Korean BBQ place offering a wide variety of meats, casual atmosphere, great for informal gatherings.</em>
+    </p>
+    
+    <div style="display: grid; gap: 12px;">
+      <div style="
+          background: white;
+          padding: 12px;
+          border-radius: 10px;
+          border-left: 3px solid #dc2626;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      ">
+        <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">📍 Location</div>
+        <div style="font-size: 13px; color: #333; font-weight: 500;">长江北路中楠都汇广场3号楼6号 · North Changjiang Road, Zhongnan Duhui Plaza, No.6, Building 3 </div>
+      </div>
+      
+      <div style="
+          background: white;
+          padding: 12px;
+          border-radius: 10px;
+          border-left: 3px solid #f59e0b;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      ">
+        <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">🍴 Must-Try</div>
+        <div style="font-size: 13px; color: #333;">牛排肉 · 牛仔骨</div>
+      </div>
+      
+      <div style="display: flex; gap: 12px;">
+        <div style="
+            flex: 1;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 3px solid #10b981;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        ">
+          <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">💰 Price</div>
+          <div style="font-size: 16px; color: #333; font-weight: 700;">100</div>
+        </div>
+        
+        <a href="https://m.dianping.com/shopinfo/lasfOcaKJxzbAXwU?msource=Appshare2021&utm_source=shop_share&shoptype=10&shopcategoryid=114&cityid=416&isoversea=0" 
+           target="_blank" 
+           style="
+            flex: 1;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+          <span>📱 大众点评</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+"""
+
+# --- 4. Popup & IFrame ---
+iframe10 = IFrame(html10, width=420, height=600)
+popup10 = folium.Popup(iframe10, max_width=2500)
+
+# --- 5. Logo 标记（圆形） ---
+icon10 = DivIcon(html=f'''
+    <div style="
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid #dc2626;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    ">
+        <img src="pictures/mingdong_logo.jpg" 
+             style="width: 36px; height: 36px; object-fit: cover; border-radius: 50%;">
+    </div>
+''', icon_size=(48, 48), icon_anchor=(24, 24))
+
+# --- 6. 添加到地图 ---
+folium.Marker(
+    location=site_10,
+    popup=popup10,
+    tooltip="明洞火炉 Myeongdong Korean BBQ",
+    icon=icon10
+).add_to(barbecue_group)
+
+
+
 # Add all feature groups to the map
 barbecue_group.add_to(m)
 seafood_group.add_to(m)
