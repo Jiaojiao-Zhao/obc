@@ -1,8 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="refresh" content="0; URL=front.html" />
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; URL=front.html" />
+
+    <!-- Fallback script in case meta refresh is blocked -->
+    <script>
+        window.location.href = "front.html";
+    </script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #555;
+        }
+        .msg {
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
+    <div class="msg">Redirecting to project... 如果没有自动跳转，请点击 <a href="front.html">这里</a></div>
 </body>
 </html>
