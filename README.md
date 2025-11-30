@@ -88,4 +88,4 @@ Info301-Final-Project/
 ├── front.html                  # Main entry for the interactive map
 ├── index.html                  # Github showcase format
 └── suzhou_cultural_map.html    # Output of app.py link to the front page
->>>>>>> 456b380 (update)
+
