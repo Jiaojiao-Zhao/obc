@@ -1,5 +1,6 @@
 import folium
 from folium.features import DivIcon
+from folium.plugins import FeatureGroupSubGroup
 import base64
 from folium import IFrame
 
@@ -27,13 +28,21 @@ folium.TileLayer(
     control=False  # Don't show in layer control
 ).add_to(m)
 
-# Create feature groups for different categories
-barbecue_group = folium.FeatureGroup(name='🍖 烧烤烤肉 Barbecue')
-seafood_group = folium.FeatureGroup(name='🦀 海鲜 Seafood')
-cafe_group = folium.FeatureGroup(name='☕ 咖啡早午餐 Cafe & Brunch')
-hotpot_group = folium.FeatureGroup(name='🍲 火锅 Hotpot')
-fastfood_group = folium.FeatureGroup(name='🍔 美式快餐 American Fast Food')
-local_group = folium.FeatureGroup(name='🍜 地方菜系 Local Food')
+# Create feature groups with two-layer structure
+# Layer 1: Main categories (parent groups)
+culinary_parent = folium.FeatureGroup(name='🍽️ Culinary 美食', show=True)
+cultural_parent = folium.FeatureGroup(name='🏛️ Cultural Sights 文化景点', show=True)
+
+# Layer 2: Subcategories under Culinary (child groups)
+barbecue_group = FeatureGroupSubGroup(culinary_parent, name='🍖 烧烤烤肉 Barbecue', show=True)
+seafood_group = FeatureGroupSubGroup(culinary_parent, name='🦀 海鲜 Seafood', show=True)
+cafe_group = FeatureGroupSubGroup(culinary_parent, name='☕ 咖啡早午餐 Cafe & Brunch', show=True)
+hotpot_group = FeatureGroupSubGroup(culinary_parent, name='🍲 火锅 Hotpot', show=True)
+fastfood_group = FeatureGroupSubGroup(culinary_parent, name='🍔 美式快餐 American Fast Food', show=True)
+local_group = FeatureGroupSubGroup(culinary_parent, name='🍜 地方菜系 Local Food', show=True)
+
+# Cultural sights - using parent group directly (no subcategories)
+cultural_group = cultural_parent
 
 site_1 = [31.38896807679732, 120.9220200006602]
 
@@ -1700,9 +1709,401 @@ folium.Marker(
     icon=icon10
 ).add_to(barbecue_group)
 
+# ========== CULTURAL SIGHTS SECTION ==========
+
+# Site 11: Zhouzhuang Mystery of Life Museum 周庄生命奥秘博物馆
+site_11 = [31.122222, 120.846472]  # Zhouzhuang area coordinates
+
+# NOTE: Add image file 'pictures/zhouzhuang_museum.jpg' for this site
+# For now using a placeholder - replace with actual image
+try:
+    with open("pictures/zhouzhuang_museum.jpg", "rb") as image_file:
+        encoded_11 = base64.b64encode(image_file.read()).decode('utf-8')
+except FileNotFoundError:
+    # Create a simple colored placeholder if image doesn't exist
+    encoded_11 = ""
+
+html11 = f"""
+<div style="
+    font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+    max-width: 380px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(6,182,212,0.1);
+    color: #1e293b;
+    overflow: hidden;
+">
+  {"<div style='position: relative; overflow: hidden; border-radius: 20px 20px 0 0;'><img src='data:image/png;base64," + encoded_11 + "' alt='周庄生命奥秘博物馆' style='width: 100%; height: 200px; object-fit: cover; display: block;' />" if encoded_11 else "<div style='height: 200px; background: linear-gradient(135deg, #06b6d4, #0891b2); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 600;'>周庄生命奥秘博物馆</div>"}
+    <div style="
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(6,182,212,0.95);
+        backdrop-filter: blur(10px);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: white;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(6,182,212,0.3);
+    ">🏛️ 文化景点</div>
+  </div>
+  
+  <div style="padding: 24px;">
+    <div style="margin-bottom: 16px;">
+      <h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #1a1a1a; line-height: 1.2;">
+        周庄生命奥秘博物馆
+      </h3>
+      <p style="margin: 4px 0 0; font-size: 15px; color: #06b6d4; font-weight: 500;">
+        Zhouzhuang Mystery of Life Museum
+      </p>
+    </div>
+    
+    <p style="
+        margin: 0 0 20px;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #4a4a4a;
+        background: rgba(255,255,255,0.6);
+        padding: 14px;
+        border-radius: 12px;
+        border-left: 3px solid #06b6d4;
+    ">
+      周庄生命奥秘博物馆是一座独特的科学展览馆，展示了生物塑化标本和人体科学知识。通过先进的生物塑化技术，展示了各种动物和人体的真实结构，是了解生命科学的绝佳场所。<br><br>
+      <em style="color: #666; font-size: 13px;">A unique science museum showcasing bio-plastinated specimens and human anatomy. An excellent place to explore life sciences through advanced preservation technology.</em>
+    </p>
+    
+    <div style="display: grid; gap: 12px;">
+      <div style="
+          background: white;
+          padding: 12px;
+          border-radius: 10px;
+          border-left: 3px solid #06b6d4;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      ">
+        <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">📍 Location</div>
+        <div style="font-size: 13px; color: #333; font-weight: 500;">周庄古镇全福路 · Quanfu Road, Zhouzhuang Ancient Town</div>
+      </div>
+      
+      <div style="display: flex; gap: 12px;">
+        <a href="https://surl.amap.com/5dILWY01uL73" 
+           target="_blank" 
+           style="
+            flex: 1;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(6,182,212,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+          <span>🗺️ 高德地图</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+"""
+
+iframe11 = IFrame(html11, width=420, height=520)
+popup11 = folium.Popup(iframe11, max_width=2500)
+
+icon11 = DivIcon(html=f'''
+    <div style="
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid #06b6d4;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    ">
+        🏛️
+    </div>
+''', icon_size=(48, 48), icon_anchor=(24, 24))
+
+folium.Marker(
+    location=site_11,
+    popup=popup11,
+    tooltip="周庄生命奥秘博物馆 Zhouzhuang Mystery of Life Museum",
+    icon=icon11
+).add_to(cultural_group)
+
+# Site 12: Tinglin Park 亭林园
+site_12 = [31.391981, 120.947420]  # Tinglin Park, Kunshan
+
+try:
+    with open("pictures/tinglin_park.jpg", "rb") as image_file:
+        encoded_12 = base64.b64encode(image_file.read()).decode('utf-8')
+except FileNotFoundError:
+    encoded_12 = ""
+
+html12 = f"""
+<div style="
+    font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+    max-width: 380px;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(34,197,94,0.1);
+    color: #1e293b;
+    overflow: hidden;
+">
+  {"<div style='position: relative; overflow: hidden; border-radius: 20px 20px 0 0;'><img src='data:image/png;base64," + encoded_12 + "' alt='亭林园' style='width: 100%; height: 200px; object-fit: cover; display: block;' />" if encoded_12 else "<div style='height: 200px; background: linear-gradient(135deg, #22c55e, #16a34a); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 600;'>亭林园</div>"}
+    <div style="
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(34,197,94,0.95);
+        backdrop-filter: blur(10px);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: white;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+    ">🌳 文化景点</div>
+  </div>
+  
+  <div style="padding: 24px;">
+    <div style="margin-bottom: 16px;">
+      <h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #1a1a1a; line-height: 1.2;">
+        亭林园
+      </h3>
+      <p style="margin: 4px 0 0; font-size: 15px; color: #22c55e; font-weight: 500;">
+        Tinglin Park
+      </p>
+    </div>
+    
+    <p style="
+        margin: 0 0 20px;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #4a4a4a;
+        background: rgba(255,255,255,0.6);
+        padding: 14px;
+        border-radius: 12px;
+        border-left: 3px solid #22c55e;
+    ">
+      亭林园是昆山市内最大的综合性公园，以玉峰山（俗称马鞍山）为中心。园内有顾炎武纪念馆、昆曲博物馆等文化景点，风景秀丽，是市民休闲和了解昆山历史文化的好去处。<br><br>
+      <em style="color: #666; font-size: 13px;">Kunshan's largest comprehensive park centered around Yufeng Mountain. Features cultural sites including Gu Yanwu Memorial Hall and Kunqu Opera Museum—a great place to explore local history and culture.</em>
+    </p>
+    
+    <div style="display: grid; gap: 12px;">
+      <div style="
+          background: white;
+          padding: 12px;
+          border-radius: 10px;
+          border-left: 3px solid #22c55e;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      ">
+        <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">📍 Location</div>
+        <div style="font-size: 13px; color: #333; font-weight: 500;">昆山市马鞍山东路1号 · No.1 Ma'anshan East Road, Kunshan</div>
+      </div>
+      
+      <div style="display: flex; gap: 12px;">
+        <a href="https://surl.amap.com/jVi1dGR15gEI" 
+           target="_blank" 
+           style="
+            flex: 1;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+          <span>🗺️ 高德地图</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+"""
+
+iframe12 = IFrame(html12, width=420, height=520)
+popup12 = folium.Popup(iframe12, max_width=2500)
+
+icon12 = DivIcon(html=f'''
+    <div style="
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid #22c55e;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    ">
+        🌳
+    </div>
+''', icon_size=(48, 48), icon_anchor=(24, 24))
+
+folium.Marker(
+    location=site_12,
+    popup=popup12,
+    tooltip="亭林园 Tinglin Park",
+    icon=icon12
+).add_to(cultural_group)
+
+# Site 13: Zhengyi Ancient Town 正仪古镇
+site_13 = [31.373554, 120.857910]  # Zhengyi Ancient Town
+
+try:
+    with open("pictures/zhengyi_town.jpg", "rb") as image_file:
+        encoded_13 = base64.b64encode(image_file.read()).decode('utf-8')
+except FileNotFoundError:
+    encoded_13 = ""
+
+html13 = f"""
+<div style="
+    font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+    max-width: 380px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(245,158,11,0.1);
+    color: #1e293b;
+    overflow: hidden;
+">
+  {"<div style='position: relative; overflow: hidden; border-radius: 20px 20px 0 0;'><img src='data:image/png;base64," + encoded_13 + "' alt='正仪古镇' style='width: 100%; height: 200px; object-fit: cover; display: block;' />" if encoded_13 else "<div style='height: 200px; background: linear-gradient(135deg, #f59e0b, #d97706); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 600;'>正仪古镇</div>"}
+    <div style="
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(245,158,11,0.95);
+        backdrop-filter: blur(10px);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: white;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+    ">🏘️ 文化景点</div>
+  </div>
+  
+  <div style="padding: 24px;">
+    <div style="margin-bottom: 16px;">
+      <h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #1a1a1a; line-height: 1.2;">
+        正仪古镇
+      </h3>
+      <p style="margin: 4px 0 0; font-size: 15px; color: #f59e0b; font-weight: 500;">
+        Zhengyi Ancient Town
+      </p>
+    </div>
+    
+    <p style="
+        margin: 0 0 20px;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #4a4a4a;
+        background: rgba(255,255,255,0.6);
+        padding: 14px;
+        border-radius: 12px;
+        border-left: 3px solid #f59e0b;
+    ">
+      正仪古镇有着千年历史，保留了江南水乡的传统风貌。古镇内有古桥、古街、古宅，是体验昆山传统文化和江南水乡风情的理想之地。相比周庄等知名古镇，这里更加宁静古朴。<br><br>
+      <em style="color: #666; font-size: 13px;">A thousand-year-old ancient town preserving traditional Jiangnan watertown charm. With ancient bridges, streets, and residences, it offers a quieter, more authentic experience than famous tourist towns.</em>
+    </p>
+    
+    <div style="display: grid; gap: 12px;">
+      <div style="
+          background: white;
+          padding: 12px;
+          border-radius: 10px;
+          border-left: 3px solid #f59e0b;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      ">
+        <div style="font-size: 11px; color: #999; text-transform: uppercase; margin-bottom: 4px;">📍 Location</div>
+        <div style="font-size: 13px; color: #333; font-weight: 500;">昆山市巴城镇正仪街道 · Zhengyi Street, Bacheng Town, Kunshan</div>
+      </div>
+      
+      <div style="display: flex; gap: 12px;">
+        <a href="https://surl.amap.com/jRad91P15bnH" 
+           target="_blank" 
+           style="
+            flex: 1;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+          <span>🗺️ 高德地图</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+"""
+
+iframe13 = IFrame(html13, width=420, height=520)
+popup13 = folium.Popup(iframe13, max_width=2500)
+
+icon13 = DivIcon(html=f'''
+    <div style="
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid #f59e0b;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    ">
+        🏘️
+    </div>
+''', icon_size=(48, 48), icon_anchor=(24, 24))
+
+folium.Marker(
+    location=site_13,
+    popup=popup13,
+    tooltip="正仪古镇 Zhengyi Ancient Town",
+    icon=icon13
+).add_to(cultural_group)
 
 
-# Add all feature groups to the map
+# Add all feature groups to the map in hierarchical order
+# Add Cultural Sights first (so it appears at top)
+cultural_parent.add_to(m)
+
+# Then add Culinary parent
+culinary_parent.add_to(m)
+
+# Then add Culinary subgroups (they will appear right after Culinary parent)
 barbecue_group.add_to(m)
 seafood_group.add_to(m)
 cafe_group.add_to(m)
@@ -1711,7 +2112,154 @@ fastfood_group.add_to(m)
 local_group.add_to(m)
 
 # Add layer control as a collapsible button - starts collapsed for cleaner UI
-folium.LayerControl(position='topright', collapsed=True).add_to(m)
+folium.LayerControl(position='topright', collapsed=False).add_to(m)
+
+# Add custom CSS and JavaScript to improve layer control hierarchy display
+custom_css_js = """
+<style>
+/* Style for parent layer groups */
+.leaflet-control-layers-overlays label {
+    font-weight: normal;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+/* Parent group styling */
+.parent-group {
+    font-weight: bold !important;
+    background: rgba(100, 150, 250, 0.15) !important;
+    border-radius: 4px;
+    padding: 6px 8px !important;
+    margin: 3px 0 !important;
+    border-left: 4px solid #6495ED;
+}
+
+/* Child group styling */
+.child-group {
+    margin-left: 25px !important;
+    font-size: 0.90em;
+    padding: 4px 6px !important;
+    border-left: 2px solid #ccc;
+    margin-top: 1px !important;
+    margin-bottom: 1px !important;
+    background: rgba(240, 240, 240, 0.3);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+/* Hidden state for children */
+.child-group.hidden {
+    display: none !important;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+/* Toggle indicator */
+.parent-group::before {
+    content: '▼ ';
+    font-size: 0.8em;
+    margin-right: 5px;
+    transition: transform 0.2s;
+}
+
+.parent-group.collapsed::before {
+    content: '▶ ';
+}
+</style>
+
+<script>
+// Wait for the map to load
+setTimeout(function() {
+    var overlaysContainer = document.querySelector('.leaflet-control-layers-overlays');
+    if (!overlaysContainer) return;
+    
+    var labels = overlaysContainer.querySelectorAll('label');
+    
+    // Identify parent and child labels based on text content
+    var culinaryParent = null;
+    var culturalParent = null;
+    var childKeywords = ['Barbecue', 'Seafood', 'Cafe', 'Hotpot', 'American Fast Food', 'Local Food'];
+    
+    // First pass: identify parents
+    labels.forEach(function(label, index) {
+        var text = label.textContent || label.innerText;
+        
+        if (text.includes('Culinary 美食')) {
+            label.classList.add('parent-group');
+            label.classList.add('collapsed');  // Start collapsed
+            label.setAttribute('data-parent', 'culinary');
+            culinaryParent = label;
+        } else if (text.includes('Cultural Sights 文化景点')) {
+            label.classList.add('parent-group');
+            label.setAttribute('data-parent', 'cultural');
+            culturalParent = label;
+        }
+    });
+    
+    // Second pass: identify children based on keywords
+    labels.forEach(function(label) {
+        var text = label.textContent || label.innerText;
+        
+        // Check if this label contains any child keywords
+        var isChild = childKeywords.some(function(keyword) {
+            return text.includes(keyword);
+        });
+        
+        if (isChild) {
+            label.classList.add('child-group');
+            label.classList.add('hidden');  // Start hidden
+            label.setAttribute('data-parent', 'culinary');
+        }
+    });
+    
+    // Add click handlers to parent groups
+    labels.forEach(function(label) {
+        if (label.classList.contains('parent-group')) {
+            var parentType = label.getAttribute('data-parent');
+            
+            // Click handler for toggle
+            label.addEventListener('click', function(e) {
+                // Only toggle on label click, not checkbox click
+                if (e.target.type !== 'checkbox') {
+                    e.preventDefault();
+                    var isCurrentlyCollapsed = this.classList.contains('collapsed');
+                    
+                    if (isCurrentlyCollapsed) {
+                        // Expand: remove collapsed, show children
+                        this.classList.remove('collapsed');
+                        showChildren(parentType);
+                    } else {
+                        // Collapse: add collapsed, hide children
+                        this.classList.add('collapsed');
+                        hideChildren(parentType);
+                    }
+                }
+            });
+        }
+    });
+    
+    function showChildren(parentType) {
+        labels.forEach(function(label) {
+            if (label.classList.contains('child-group') && label.getAttribute('data-parent') === parentType) {
+                label.classList.remove('hidden');
+            }
+        });
+    }
+    
+    function hideChildren(parentType) {
+        labels.forEach(function(label) {
+            if (label.classList.contains('child-group') && label.getAttribute('data-parent') === parentType) {
+                label.classList.add('hidden');
+            }
+        });
+    }
+    
+}, 1000);
+</script>
+"""
+
+m.get_root().html.add_child(folium.Element(custom_css_js))
 
 m.save("suzhou_cultural_map.html")
 
